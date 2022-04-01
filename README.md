@@ -1,2 +1,2 @@
 # 60-Days-of-Code
-DSA Problem 
+2 DSA Problem Daily
