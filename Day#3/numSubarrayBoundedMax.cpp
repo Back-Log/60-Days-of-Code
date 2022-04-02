@@ -1,35 +1,28 @@
-xclass Solution {
+class Solution {
 public:
     int numSubarrayBoundedMax(vector<int>& nums, int left, int right) {
         
+      // main idea is do consider the element that are lesser than left it may be used in future 
+        
+        
         int ans=0;
-        int curr_max=nums[0];
-        int window=0;
-        for(int i=0;i<size(nums);i++)
+        int st=-1,end=-1;
+        for(int i=0;i<nums.size();i++)
         {
-            curr_max=max(curr_max,nums[i]);
-            if(nums[i]>=left and nums[i]<=right)
+             if(nums[i]>right)
+             {
+                 //reset start and end
+                 st=end=i;
+             }
+            else if(nums[i]>=left)
             {
-                ans++;
+                end=i;
             }
-            if(curr_max>=left and curr_max<=right)
-            {
-             window++;   
-            }
-            else
-            {
-                int total=window*(window-1)/2;
-                ans+=(total);
-                window=0;
-                curr_max=-1;
-            }
-            
+            ans+=(end-st);
             
         }
-        cout<<ans;
-         int total=window*(window-1)/2;
-        ans+=(total);
         
         return ans;
+        
     }
 };
